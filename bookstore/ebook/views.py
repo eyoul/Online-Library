@@ -7,3 +7,7 @@ def index(request):
 # login and logout .
 def logio(request):
     return render(request, 'auth/logio.html', {})
+
+# About Page .
+def about(request):
+    return render(request, 'about.html', {})
