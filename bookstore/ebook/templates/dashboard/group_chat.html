@@ -1,8 +1,8 @@
-{% extends 'base.html' %}
-{% block body %}{% endblock %}
+{% extends 'dashboard/base.html' %}
 
 
 {% block content %}
+{% include 'dashboard/navbar.html' %}
 <div class="container">
     <div class="jumbotron">
       <h1 class="display-4">Group Chat</h1>
@@ -10,10 +10,12 @@
     </div>
 
     <div class="container-fluid bg-light" id="chat">
+      {% comment %} {% for fost in object_list %} {% endcomment %}
       <div class="content d-flex flex-column" id="chat-content">
-
-      </div>
+        
+    </div>
       <form class="tools form-row">
+
         <input id="newMessage" class="form-control col mr-2" type="text" name="" placeholder="Message">
         <input id="from" class="form-control col-2 mr-2" type="text" name="" placeholder="From" disabled>
         <div class="emoji-list" id="emoji-list">
