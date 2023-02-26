@@ -39,19 +39,23 @@
         </div>
       </div>
     </div>
+  
     <div class="forms">
-        <div class="form-content">
+      
+         <div class="form-content">
+          
           <div class="login-form">
+            <div class="title"><a href="{% url 'index' %}"><center>Home</center></a></div>
             <div class="title">Login</div>
           <form action="#">
             <div class="input-boxes">
               <div class="input-box">
-                <i class="fas fa-envelope"></i>
-                <input type="text" placeholder="Enter your email" required>
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Username" name="username" required>
               </div>
               <div class="input-box">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Enter your password" required>
+                <input type="password" placeholder="password" name="password" required>
               </div>
               <div class="text"><a href="#">Forgot password?</a></div>
               <div class="button input-box">
@@ -63,26 +67,35 @@
       </div>
         <div class="signup-form">
           <div class="title">Signup</div>
-        <form action="#">
+        {% comment %} <form method="POST" action="{% url 'signup' %}"> {% endcomment %}
+            {% comment %} {% csrf_token %} {% endcomment %}
             <div class="input-boxes">
               <div class="input-box">
                 <i class="fas fa-user"></i>
-                <input type="text" placeholder="Enter your name" required>
+                <input type="text" placeholder="First name" name="firstname" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Last name" name="lastname" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Username" name="username" required>
               </div>
               <div class="input-box">
                 <i class="fas fa-envelope"></i>
-                <input type="email" placeholder="Enter your email" required>
+                <input type="email" placeholder="email" name="email" required>
               </div>
               <div class="input-box">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Enter your password" required>
+                <input type="password" placeholder="Password" name="password" required>
               </div>
               <div class="input-box">
-              <select class="select-box" name="fa-user" required>
+              {% comment %} <select class="select-box" name="fa-user" required>
                 <option value="" disabled selected hidden>Are you Techer or Student</option>
-                <option value="Techer">Techer</option>
-                <option value="Student">Student</option>
-              </select>
+                <option value="Techer" name='techer'>Techer</option>
+                <option value="Student" name='student'>Student</option>
+              </select> {% endcomment %}
 
               </div>
               <div class="button input-box">
@@ -90,6 +103,7 @@
               </div>
               <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
             </div>
+            
       </form>
     </div>
     </div>
