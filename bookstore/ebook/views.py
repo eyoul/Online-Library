@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html', {})
+    return render(request, 'dashboard/base.html', {})
 
 # login and logout .
 def logio(request):
@@ -11,3 +11,6 @@ def logio(request):
 # About Page .
 def about(request):
     return render(request, 'about.html', {})
+
+def gchat(request):
+    return render(request, 'group_chat.html', {})

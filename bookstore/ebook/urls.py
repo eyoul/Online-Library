@@ -6,5 +6,5 @@ urlpatterns = [
    path('', views.index, name='index'),
    path('logio', views.logio, name='logio'),
    path('about', views.about, name='about'),
-  
+   path('gchat', views.gchat, name='gchat'),
 ]

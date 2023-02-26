@@ -53,7 +53,7 @@ class Chat(models.Model):
     posted_at = models.DateTimeField(auto_now=True, null=True)
 
     def __str__(self):
-        return str(self.message)
+        return str(self.message) + '|' + str(self.user)
 
 class Deleterequest(models.Model):
     delete_request = models.CharField(max_length=100, null=True, blank=True)

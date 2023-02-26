@@ -1,0 +1,42 @@
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <style type="text/css" href="style.css"></style>
+
+  <title>Group Chat</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-4">Group Chat</h1>
+      <!-- <p class="lead">By SmfCoder</p> -->
+    </div>
+
+    <div class="container-fluid bg-light" id="chat">
+      <div class="content d-flex flex-column" id="chat-content">
+
+    </div>
+      <form class="tools form-row">
+        <input id="newMessage" class="form-control col mr-2" type="text" name="" placeholder="Message">
+        <input id="from" class="form-control col-2 mr-2" type="text" name="" placeholder="From" disabled>
+        <div class="emoji-list" id="emoji-list">
+
+        </div>
+        <button id="emoji" class="form-control col-1 mr-2" type="button" name="" placeholder="From">
+          <i class="far fa-grin-alt"></i>
+        </button>
+        <button onclick="App.sendMessage()" class="btn btn-primary " type="button">
+          <i class="far fa-paper-plane"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+   <!-- <script src="script.js"></script> -->
+</body>
+
+</html>
