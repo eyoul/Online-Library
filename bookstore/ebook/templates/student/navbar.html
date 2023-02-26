@@ -1,5 +1,5 @@
 
-{% extends 'dashboard/base.html' %}
+
   <nav>
     <div class="navbar">
       <i class='bx bx-menu'></i>
@@ -10,7 +10,7 @@
           <i class='bx bx-x' ></i>
         </div>
         <ul class="links">
-          <li><a href="#">HOME</a></li>
+          <li><a href="{% url 'index' %}">HOME</a></li>
           <li>
             <a href="#">Resource</a>
             <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
@@ -20,10 +20,9 @@
             </ul>
           </li>
           <li>
-            <a href="#">Group Chat</a>
+            <a href="{% url 'gchat' %}">Group Chat</a>
           </li>
           <li><a href="#">Send Feedback</a></li>
-          <li><a href="#">ABOUT US</a></li>
         </ul>
       </div>
       <div class="search-box">
@@ -34,6 +33,3 @@
       </div>
     </div>
   </nav>
-  {% block content  %}
-
-  {% endblock  %}
