@@ -1,11 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views.generic import View
 from .models import Rbook
 from .forms import RbookForm
 from django.http import HttpResponseRedirect
+from django.contrib import auth
+from django.contrib.auth import authenticate
+from django.contrib import messages
 
 
-# Create your views here.
+from . import views 
+ 
 def index(request):
     return render(request, "index.html", {})
 
@@ -66,3 +70,29 @@ class Book(View):
             print(form.errors)
         self.context["form"] = form
         return render(request, "publisher/add_rbook2.html", self.context)
+def home(request):
+    return render(request, 'dashboard/home.html', {})
+
+# User is authenticated
+def loginView(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None and user.is_active:
+            auth.login(request, user)
+            if user.is_admin or user.is_superuser:
+                return redirect('dashboard')
+            elif user.is_librarian:
+                return redirect('librarian')
+            elif user.is_publisher:
+                return redirect('publisher')
+            else:
+                return redirect('student')
+        else:
+            messages.info(request, "Invalid username or password")
+            return redirect('home')
+
+
+
+

@@ -1,4 +1,4 @@
-{% load static %}
+{% comment %} {% load static %}
 <!DOCTYPE html>
 
 
@@ -67,8 +67,9 @@
       </div>
         <div class="signup-form">
           <div class="title">Signup</div>
-        <form action="#">
-            <div class="input-boxes">
+        {% comment %} <form method="POST" action="{% url 'signup' %}"> {% endcomment %}
+            {% comment %} {% csrf_token %} {% endcomment %}
+            {% comment %} {% comment %} <div class="input-boxes">
               <div class="input-box">
                 <i class="fas fa-user"></i>
                 <input type="text" placeholder="First name" name="firstname" required>
@@ -90,22 +91,23 @@
                 <input type="password" placeholder="Password" name="password" required>
               </div>
               <div class="input-box">
-              <select class="select-box" name="fa-user" required>
+              {% comment %} <select class="select-box" name="fa-user" required>
                 <option value="" disabled selected hidden>Are you Techer or Student</option>
-                <option value="Techer">Techer</option>
-                <option value="Student">Student</option>
-              </select>
+                <option value="Techer" name='techer'>Techer</option>
+                <option value="Student" name='student'>Student</option>
+              </select> {% endcomment %}
 
-              </div>
+              {% comment %} </div>
               <div class="button input-box">
                 <input type="submit" value="Sumbit">
               </div>
               <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
             </div>
+            
       </form>
     </div>
     </div>
     </div>
   </div>
-</body>
-</html>
+</body> {% endcomment %}
+{% comment %} </html> {% endcomment %} {% endcomment %} {% endcomment %} {% endcomment %}
