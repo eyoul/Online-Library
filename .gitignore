@@ -1,1 +1,4 @@
 virt/
+bookstore/__pycache__
+ebook/__pycache__
+members/__pycache__
