@@ -1,6 +1,6 @@
 virt/
 bookstore/__pycache__
-ebook/__pycache__
-ebook/migrations/__pycache__
-members/__pycache__
-members/migrations/__pycache__
+bookstore/ebook/__pycache__
+bookstore/ebook/migrations/__pycache__
+bookstore/members/__pycache__
+bookstore/members/migrations/__pycache__
