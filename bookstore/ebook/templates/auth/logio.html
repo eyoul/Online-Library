@@ -1,4 +1,4 @@
-{% load static %}
+{% comment %} {% load static %}
 <!DOCTYPE html>
 
 
@@ -69,7 +69,7 @@
           <div class="title">Signup</div>
         {% comment %} <form method="POST" action="{% url 'signup' %}"> {% endcomment %}
             {% comment %} {% csrf_token %} {% endcomment %}
-            <div class="input-boxes">
+            {% comment %} {% comment %} <div class="input-boxes">
               <div class="input-box">
                 <i class="fas fa-user"></i>
                 <input type="text" placeholder="First name" name="firstname" required>
@@ -97,7 +97,7 @@
                 <option value="Student" name='student'>Student</option>
               </select> {% endcomment %}
 
-              </div>
+              {% comment %} </div>
               <div class="button input-box">
                 <input type="submit" value="Sumbit">
               </div>
@@ -109,5 +109,5 @@
     </div>
     </div>
   </div>
-</body>
-</html>
+</body> {% endcomment %}
+{% comment %} </html> {% endcomment %} {% endcomment %} {% endcomment %} {% endcomment %}

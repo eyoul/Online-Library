@@ -1,5 +1,9 @@
 {
     "recommendations": [
-        "sidthesloth.html5-boilerplate"
+        "sidthesloth.html5-boilerplate",
+        "shamanu4.django-intellisense",
+        "bigonesystems.django",
+        "batisteo.vscode-django",
+        "ms-python.python"
     ]
 }

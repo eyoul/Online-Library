@@ -1,0 +1,18 @@
+{% comment %} <!DOCTYPE html>
+{% block content %}
+
+
+<html>
+<head>
+	
+	<title></title>
+</head>
+<body>
+     <form action="/rbook" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" class="btn btn-secondary">
+    </form> 
+</body>
+</html>
+{% endblock %} {% endcomment %}
