@@ -1,3 +1,7 @@
 virt/
 *.pyc
 *.pyo
+bookstore/bookstore/__pycache__/
+bookstore/ebook/__pycache__
+.vscode/
+
