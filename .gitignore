@@ -1,5 +1,5 @@
 virt/
 __pycache__
-bookstore/bookstore/__pycache__/
-bookstore/ebook/__pycache__/
-bookstore/members/__pycache__/
+bookstore/bookstore/__pycache__
+bookstore/ebook/__pycache__
+bookstore/members/__pycache__
