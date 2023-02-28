@@ -14,9 +14,7 @@ def index(request):
     return render(request, "index.html", {})
 
 
-# login and logout .
-def logio(request):
-    return render(request, "auth/logio.html", {})
+
 
 
 # About Page .
@@ -30,10 +28,12 @@ def addRbook(request):
     submitted = False
     if request.method == "POST":
         print("inside post")
-        form = RbookForm(request.POST)
+        form = RbookForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect("/rbook?submitted=True")
+        else:
+            print (form.errors)
     else:
         form = RbookForm
         if "submitted" in request.GET:
@@ -70,6 +70,8 @@ class Book(View):
             print(form.errors)
         self.context["form"] = form
         return render(request, "publisher/add_rbook2.html", self.context)
+    
+    
 def home(request):
     return render(request, 'dashboard/home.html', {})
 

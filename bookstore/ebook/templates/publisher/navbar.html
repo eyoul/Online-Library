@@ -8,12 +8,12 @@
           <i class='bx bx-x' ></i>
         </div>
         <ul class="links">
-          <li><a href="{% url 'index' %}">HOME</a></li>
+          <li><a href="{% url 'home' %}">HOME</a></li>
           <li>
             <a href="#">Resource</a>
             <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
             <ul class="htmlCss-sub-menu sub-menu">
-              <li><a href="#">Add Reference book </a></li>
+              <li><a href="{% url 'addRbook' %}">Add Reference book </a></li>
               <li><a href="#">Delete request </a></li>
               <li><a href="#">Text book</a></li>
               <li><a href="#">Reference book </a></li>
@@ -22,6 +22,7 @@
               <a href="#">Group Chat</a>
             </li>      
           <li><a href="#">Send Feedback</a></li>
+          <li><a href="{% url 'logout' %}">Logout</a></li>
         </ul>
       </div>
       <div class="search-box">
