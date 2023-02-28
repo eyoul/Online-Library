@@ -5,3 +5,6 @@ bookstore/bookstore/__pycache__/
 bookstore/ebook/__pycache__
 .vscode/
 
+bookstore/bookstore/__pycache__/settings.cpython-310.pyc
+*.pyc
+*.pyc
