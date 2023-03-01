@@ -11,6 +11,6 @@ urlpatterns = [
     path("book", views.Book.as_view(), name="book"),
 
    path('publisher/', views.home, name='home'),
-   path('dashboard/', views.home, name='home'),
+   path('student/', views.student, name='student'),
 
 ]

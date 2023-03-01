@@ -73,7 +73,9 @@ class Book(View):
     
     
 def home(request):
-    return render(request, 'dashboard/home.html', {})
+    return render(request, 'publisher/home.html', {})
+def student(request):
+    return render(request, 'student/home.html', {})
 
 # User is authenticated
 def loginView(request):
