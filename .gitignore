@@ -15,3 +15,4 @@ bookstore/ebook/__pycache__/urls.cpython-310.pyc
 bookstore/members/__pycache__/views.cpython-310.pyc
 bookstore/members/__pycache__/views.cpython-310.pyc
 bookstore/members/__pycache__/views.cpython-310.pyc
+*.pyc
