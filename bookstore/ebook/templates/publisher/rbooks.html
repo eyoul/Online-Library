@@ -31,7 +31,7 @@
         <td>{{ book.subject }}</td>
         <td>{{ book.desc }}</td>
         <td>{{book.uploaded_by}}</td>
-        <td><a href="{% static book.pdf %}" > <img src="{% static 'ebook/media/rbook/covers/Geography_g12.PNG' %}" class="rounded" width="120" height="100"> </a></td>
+        <td><a href="{% static book.pdf %}" > <img src="{% static book.cover %}" class="rounded" width="120" height="100"> </a></td>
       </tr>
       {% endfor %}
     </tbody>
