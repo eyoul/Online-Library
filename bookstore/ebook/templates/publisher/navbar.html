@@ -1,7 +1,7 @@
   <nav>
     <div class="navbar">
       <i class='bx bx-menu'></i>
-      <div class="logo"><a href="#">Dummies Library</a></div>
+      <div class="logo"><a href="{% url 'home' %}">Dummies Library</a></div>
       <div class="nav-links">
         <div class="sidebar-logo">
           <span class="logo-name">Dummies Library</span>
@@ -10,17 +10,21 @@
         <ul class="links">
           <li><a href="{% url 'home' %}">HOME</a></li>
           <li>
-            <a href="#">Resource</a>
-            <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
-            <ul class="htmlCss-sub-menu sub-menu">
-              <li><a href="{% url 'addRbook' %}">Add Reference book </a></li>
-              <li><a href="#">Add Text book </a></li>
-              <li><a href="#">Text book</a></li>
-              <li><a href="#">Reference book </a></li>
-            </ul>
-            {% comment %} <li>
-              <a href="#">Group Chat</a>
-            </li>       {% endcomment %}
+              <a href="#">ADD BOOK</a>
+              <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+              <ul class="htmlCss-sub-menu sub-menu">
+                <li><a href="{% url 'addRbook' %}">ADD REFERENCE BOOK</a></li>
+                <li><a href="{% url 'addTbook' %}">ADD TEXT BOOK</a></li>
+              </ul>
+            </li>      
+            <li>
+              <a href="#">BOOKS</a>
+              <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+              <ul class="htmlCss-sub-menu sub-menu"> 
+                <li><a href="{% url 'list_tbooks' %}">TEXT BOOK</a></li>
+                <li><a href="{% url 'list_books' %}">REFERENCE BOOK</a></li>
+              </ul>
+            </li> 
           <li><a href="#">Manage</a></li>
           {% comment %} <li><a href="#">Send Feedback</a></li> {% endcomment %}
           <li><a href="{% url 'logout' %}">Logout</a></li>
