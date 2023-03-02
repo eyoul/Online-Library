@@ -13,12 +13,22 @@ from . import views
 def index(request):
     return render(request, "index.html", {})
 
-
 # About Page .
 def about(request):
     return render(request, "about.html", {})
 
+def pdfview(request, rbook_id):
+    rbook = Rbook.objects.get(pk=rbook_id)
+    rbook.pdf = str(rbook.pdf).replace("ebook/static/", "")
+    rbook.cover = str(rbook.cover).replace("ebook/static/", "")
+    return render(request, "publisher/view.html", {"rbook": rbook})
 
+def pdfview1(request, tbook_id):
+    tbook = Tbook.objects.get(pk=tbook_id)
+    tbook.pdf = str(tbook.pdf).replace("ebook/static/", "")
+    tbook.cover = str(tbook.cover).replace("ebook/static/", "")
+    return render(request, "publisher/view1.html", {"tbook": tbook})
+    
 # publisher add rbook page
 def addRbook(request):
     print("request received")
@@ -130,6 +140,7 @@ def addTbook(request):
 def show_tbook(request, tbook_id):
     tbook = Tbook.objects.get(pk=tbook_id)
     return render(request, "publisher/single_tbook.html", {"tbook": tbook})
+
 
 
 def listTBooks(request):
