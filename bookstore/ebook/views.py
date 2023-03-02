@@ -13,6 +13,7 @@ from . import views
 def index(request):
     return render(request, "index.html", {})
 
+
 # About Page .
 def about(request):
     return render(request, "about.html", {})
@@ -30,7 +31,7 @@ def addRbook(request):
             form.save()
             return HttpResponseRedirect("rbook?submitted=True")
         else:
-            print (form.errors)
+            print(form.errors)
             print(form.errors)
     else:
         form = RbookForm
@@ -44,6 +45,9 @@ def addRbook(request):
 def listBooks(request):
     books_list = Rbook.objects.all()
     print("rbooks: ", books_list)
+    for data in books_list:
+        data.pdf = str(data.pdf).replace("ebook/static/", "")
+        data.cover = str(data.cover).replace("ebook/static/", "")
     return render(request, "publisher/rbooks.html", {"books_list": books_list})
 
 
@@ -68,12 +72,14 @@ class Book(View):
             print(form.errors)
         self.context["form"] = form
         return render(request, "publisher/add_rbook.html", self.context)
-    
-    
+
+
 def home(request):
-    return render(request, 'publisher/home.html', {})
+    return render(request, "publisher/home.html", {})
+
+
 def student(request):
-    return render(request, 'student/home.html', {})
+    return render(request, "student/home.html", {})
 
 
 def home(request):
@@ -116,7 +122,9 @@ def addTbook(request):
         form = TbookForm
         if "submitted" in request.GET:
             submitted = True
-    return render(request, "publisher/add_tbooks.html", {"form": form, "submitted": submitted})
+    return render(
+        request, "publisher/add_tbooks.html", {"form": form, "submitted": submitted}
+    )
 
 
 def show_tbook(request, tbook_id):
@@ -127,6 +135,9 @@ def show_tbook(request, tbook_id):
 def listTBooks(request):
     list_tbooks = Tbook.objects.all()
     print("tbooks: ", list_tbooks)
+    for data in list_tbooks:
+        data.pdf = str(data.pdf).replace("ebook/static/", "")
+        data.cover = str(data.cover).replace("ebook/static/", "")
     return render(request, "publisher/tbooks.html", {"list_tbooks": list_tbooks})
 
 
@@ -138,6 +149,7 @@ def show_rbook(request, rbook_id):
 def grade_rbooks(request, grade):
     rbooks = Rbook.objects.filter(grade=grade)
     return render(request, "publisher/subject_rbook.html", {"rbooks": rbooks})
+
 
 def grade_tbooks(request, grade):
     tbooks = Tbook.objects.filter(grade=grade)

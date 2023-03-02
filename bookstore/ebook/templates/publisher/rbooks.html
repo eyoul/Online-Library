@@ -7,7 +7,7 @@
         <br>
 
 <div class="container">
-        <center><h1>Text Books</h1></center>
+        <center><h1>Reference Books</h1></center>
 <table class="table">
     <thead>
       <tr>
@@ -31,14 +31,10 @@
         <td>{{ book.subject }}</td>
         <td>{{ book.desc }}</td>
         <td>{{book.uploaded_by}}</td>
-        <td><a href="{% static book.pdf %}" > book.pdf </a></td>
-        <td>  </td>
-        
-    </tr>
+        <td><a href="{% static book.pdf %}" > <img src="{% static 'ebook/media/rbook/covers/Geography_g12.PNG' %}" class="rounded" width="120" height="100"> </a></td>
+      </tr>
       {% endfor %}
     </tbody>
   </table>
 </div>
   {% endblock %}
-
-  {% comment %} <img src="{% static book.cover %}" class="rounded" width="120" height="100">  {% endcomment %}
