@@ -9,7 +9,7 @@ urlpatterns = [
     path("publisher/rbook", views.addRbook, name="addRbook"),
     path("publisher/list_books", views.listBooks, name="list_books"),
     path("publisher/tbook", views.addTbook, name="addTbook"),
-    path("publisher/list_tbooks", views.listTBooks, name="list_tbooks"),
+    path("list_tbooks", views.listTBooks, name="list_tbooks"),
    
    
 
