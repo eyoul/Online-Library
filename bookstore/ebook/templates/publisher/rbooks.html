@@ -1,0 +1,40 @@
+{% extends 'publisher/base.html' %}
+{% block content %} 
+{% load static %}
+        <br>
+        <br>
+        <br>
+        <br>
+
+<div class="container">
+        <center><h1>Reference Books</h1></center>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">TITLE</th>
+        <th scope="col">GRADE</th>
+        <th scope="col">SUBJECT</th> 
+        <th scope="col">DESCRIPTION</th>
+        <th scope="col">UPLOADED BY</th>
+        <th scope="col">FILE</th>
+      
+      </tr>
+    </thead>
+    <tbody>
+        {% for book in books_list %}  
+      <tr>
+        
+        <th scope="row">{{ book.id }}</th>
+        <td>{{ book.title }}</td>
+        <td>{{ book.grade }}</td>
+        <td>{{ book.subject }}</td>
+        <td>{{ book.desc }}</td>
+        <td>{{book.uploaded_by}}</td>
+        <td><a href="{% static book.pdf %}" > <img src="{% static 'ebook/media/rbook/covers/Geography_g12.PNG' %}" class="rounded" width="120" height="100"> </a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+  {% endblock %}

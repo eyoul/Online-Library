@@ -8,9 +8,9 @@ class Tbook(models.Model):
     subject = models.CharField(max_length=100)
     desc = models.CharField(max_length=1000)
     uploaded_by = models.CharField(max_length=100, null=True, blank=True)
-    pdf = models.FileField(upload_to="ebook/media/tbook/pdfs")
+    pdf = models.FileField(upload_to="ebook/static/ebook/media/tbook/pdfs")
     cover = models.ImageField(
-        upload_to="ebook/media/tbook/covers", null=True, blank=True
+        upload_to="ebook/static/ebook/media/tbook/covers", null=True, blank=True
     )
 
     def __str__(self):
@@ -28,9 +28,9 @@ class Rbook(models.Model):
     subject = models.CharField(max_length=100)
     desc = models.CharField(max_length=1000)
     uploaded_by = models.CharField(max_length=100, null=True, blank=True)
-    pdf = models.FileField(upload_to="ebook/media/rbook/pdfs")
+    pdf = models.FileField(upload_to="ebook/static/ebook/media/rbook/pdfs")
     cover = models.ImageField(
-        upload_to="ebook/media/rbook/covers", null=True, blank=True
+        upload_to="ebook/static/ebook/media/rbook/covers", null=True, blank=True
     )
 
     def __str__(self):

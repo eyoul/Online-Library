@@ -1,18 +1,14 @@
 
 {% extends 'publisher/base.html' %}
 
-
 {% load crispy_forms_tags %}
 {% block content %}
 <div>
     
     <form method="post" enctype= multipart/form-data>
-    {% csrf_token %}
-    <center><h2>ADD REFERENCE OR SLIDE</h2></center>
-    <div class="col-12">
-        <label for="inputAddress" class="form-label">Title</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="Title.." name="title" required>
-    </div>
+        {% csrf_token %}
+        <center><h2>ADD TEXT BOOK</h2></center>
+    
     <div class="col-12">
         <label for="inputState" class="form-label">Grade</label>
          <select id="inputState" class="form-select" name="grade" required>
@@ -37,7 +33,7 @@
         <input type="text" class="form-control" id="inputAddress" placeholder="Description .." name="desc" required>
     </div>
     <div class="col-12">
-        <label for="inputAddress" class="form-label" desable>Uploaded By</label>
+        <label for="inputAddress" class="form-label">Uploaded By</label>
         <input type="text" class="form-control" id="inputAddress"  name="uploaded_by" value="{{ user.username}}" disabled>
     </div>
 

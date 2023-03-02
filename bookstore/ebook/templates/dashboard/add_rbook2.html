@@ -1,54 +1,47 @@
-
-{% extends 'publisher/base.html' %}
-
-
+{% extends 'dashboard/base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
 <div>
-    
+    <center><h2>Add Reference or Slide</h2></center>
     <form method="post" enctype= multipart/form-data>
     {% csrf_token %}
-    <center><h2>ADD REFERENCE OR SLIDE</h2></center>
     <div class="col-12">
         <label for="inputAddress" class="form-label">Title</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="Title.." name="title" required>
+        <input type="text" class="form-control" id="inputAddress" placeholder="Title.." name="title">
     </div>
     <div class="col-12">
         <label for="inputState" class="form-label">Grade</label>
-         <select id="inputState" class="form-select" name="grade" required>
+         <select id="inputState" class="form-select" name="grade">
         <option selected>Choose...</option>
-        <option>Grade 12</option>
-        <option>Grade 11</option>
+        <option>...</option>
         <option>Grade 10</option>
         </select>
     </div>
     <div class="col-12">
         <label for="inputState" class="form-label">Subject</label>
-        <select id="inputState" class="form-select" name="subject" required>
+        <select id="inputState" class="form-select" name="subject">
         <option selected>Choose...</option>
-        <option>Biology</option> 
+        <option>...</option> 
         <option>English</option>
-        <option>Geography</option>
-        <option>Mathematics</option>
         </select>
     </div>
     <div class="col-12">
         <label for="inputAddress" class="form-label">Description</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="Description .." name="desc" required>
+        <input type="text" class="form-control" id="inputAddress" placeholder="Description .." name="desc">
     </div>
     <div class="col-12">
         <label for="inputAddress" class="form-label" desable>Uploaded By</label>
-        <input type="text" class="form-control" id="inputAddress"  name="uploaded_by" value="{{ user.username}}" disabled>
+        <input type="text" class="form-control" id="inputAddress" placeholder="Uploaded By .." name="uploaded_by" >
     </div>
 
     <div class="col-12">
         <label for="formFile" class="form-label">Add Pdf File</label>
-        <input class="form-control" type="file" id="formFile" name="pdf" required>
+        <input class="form-control" type="file" id="formFile" name="pdf">
     </div>
 
     <div class="col-12">
         <label for="formFile" class="form-label">Add Cover Page</label>
-        <input class="form-control" type="file" id="formFile" name="cover" required>
+        <input class="form-control" type="file" id="formFile" name="cover">
     </div>
     <br>
     <div class="col-12">
@@ -58,3 +51,5 @@
 </div>
 
 {% endblock  %}
+
+

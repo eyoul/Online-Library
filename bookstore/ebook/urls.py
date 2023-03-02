@@ -4,10 +4,14 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("logio", views.logio, name="logio"),
     path("about", views.about, name="about"),
-    path("rbook", views.addRbook, name="addRbook"),
-    path("list_books", views.listBooks, name="list_books"),
+    path("publisher/", views.home, name="home"),
+    path("publisher/rbook", views.addRbook, name="addRbook"),
+    path("publisher/list_books", views.listBooks, name="list_books"),
+    path("publisher/tbook", views.addTbook, name="addTbook"),
+    path("publisher/list_tbooks", views.listTBooks, name="list_tbooks"),
+    path("book", views.Book.as_view(), name="book"),
+    path("student/", views.student, name="student"),
     path("rbook/<rbook_id>", views.show_rbook, name="show_rbook"),
     path("rbook/grade/<grade>", views.grade_rbooks, name="grade_rbooks"),
     path("update_rbook/<rbook_id>", views.update_rbook, name="update_rbook"),

@@ -1,16 +1,15 @@
 {% extends 'base.html' %}
-<!DOCTYPE html>
+
 <html lang="en" dir="ltr">
 {% block content  %}
-
-
 <body>
     <nav>
     <div class="menu">
       <div class="logo">
-        <a href="#">Dummies Library</a>
+        <a href="{% url 'index' %}">Dummies Library</a>
       </div>
       <ul>
+        <li><a href="{% url 'student' %}">Student</a></li>
         <li><a href="{% url 'register' %}">Register</a></li>
         <li><a href="{% url 'login' %}">SignIn</a></li>
       

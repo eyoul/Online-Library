@@ -7,17 +7,11 @@ from django.contrib import auth
 from django.contrib.auth import authenticate
 from django.contrib import messages
 
-
 from . import views
 
 
 def index(request):
     return render(request, "index.html", {})
-
-
-# login and logout .
-def logio(request):
-    return render(request, "auth/logio.html", {})
 
 
 # About Page .
@@ -30,26 +24,31 @@ def addRbook(request):
     print("request received")
     submitted = False
     if request.method == "POST":
+        print("inside post")
         print("inside post new")
         form = RbookForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect("/rbook?submitted=True")
+            return HttpResponseRedirect("rbook?submitted=True")
         else:
+            print(form.errors)
             print(form.errors)
     else:
         form = RbookForm
         if "submitted" in request.GET:
             submitted = True
     return render(
-        request, "publisher/add_rbook2.html", {"form": form, "submitted": submitted}
+        request, "publisher/add_rbook.html", {"form": form, "submitted": submitted}
     )
 
 
 def listBooks(request):
     books_list = Rbook.objects.all()
     print("rbooks: ", books_list)
-    return render(request, "rbooks/rbooks.html", {"books_list": books_list})
+    for data in books_list:
+        data.pdf = str(data.pdf).replace("ebook/static/", "")
+        data.cover = str(data.cover).replace("ebook/static/", "")
+    return render(request, "publisher/rbooks.html", {"books_list": books_list})
 
 
 class Book(View):
@@ -59,7 +58,7 @@ class Book(View):
         print("get handler")
         form = RbookForm()
         self.context["form"] = form
-        return render(request, "publisher/add_rbook2.html", self.context)
+        return render(request, "publisher/add_rbook.html", self.context)
 
     def post(self, request):
         print("post handler")
@@ -72,11 +71,19 @@ class Book(View):
         else:
             print(form.errors)
         self.context["form"] = form
-        return render(request, "publisher/add_rbook2.html", self.context)
+        return render(request, "publisher/add_rbook.html", self.context)
 
 
 def home(request):
-    return render(request, "dashboard/home.html", {})
+    return render(request, "publisher/home.html", {})
+
+
+def student(request):
+    return render(request, "student/home.html", {})
+
+
+def home(request):
+    return render(request, "publisher/home.html", {})
 
 
 # User is authenticated
@@ -108,35 +115,40 @@ def addTbook(request):
         form = TbookForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect("/tbook?submitted=True")
+            return HttpResponseRedirect("tbook?submitted=True")
         else:
             print(form.errors)
     else:
         form = TbookForm
         if "submitted" in request.GET:
             submitted = True
-    return render(request, "add_textbook.html", {"form": form, "submitted": submitted})
+    return render(
+        request, "publisher/add_tbooks.html", {"form": form, "submitted": submitted}
+    )
 
 
 def show_tbook(request, tbook_id):
     tbook = Tbook.objects.get(pk=tbook_id)
-    return render(request, "tbooks/single_tbook.html", {"tbook": tbook})
+    return render(request, "publisher/single_tbook.html", {"tbook": tbook})
 
 
 def listTBooks(request):
-    books_list = Tbook.objects.all()
-    print("tbooks: ", books_list)
-    return render(request, "tbooks/tbooks.html", {"books_list": books_list})
+    list_tbooks = Tbook.objects.all()
+    print("tbooks: ", list_tbooks)
+    for data in list_tbooks:
+        data.pdf = str(data.pdf).replace("ebook/static/", "")
+        data.cover = str(data.cover).replace("ebook/static/", "")
+    return render(request, "publisher/tbooks.html", {"list_tbooks": list_tbooks})
 
 
 def show_rbook(request, rbook_id):
     rbook = Rbook.objects.get(pk=rbook_id)
-    return render(request, "rbooks/single_rbook.html", {"rbook": rbook})
+    return render(request, "publisher/single_rbook.html", {"rbook": rbook})
 
 
 def grade_rbooks(request, grade):
     rbooks = Rbook.objects.filter(grade=grade)
-    return render(request, "rbooks/subject_rbook.html", {"rbooks": rbooks})
+    return render(request, "publisher/subject_rbook.html", {"rbooks": rbooks})
 
 
 def grade_tbooks(request, grade):
@@ -170,3 +182,5 @@ def update_rbook(request, rbook_id):
     else:
         form = RbookForm(None, instance=rbook)
     return render(request, "rbooks/update_rbook.html", {"rboook": rbook, "form": form})
+
+    return render(request, "publisher/subject_tbook.html", {"tbooks": tbooks})
