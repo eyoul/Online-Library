@@ -18,3 +18,4 @@ bookstore/members/__pycache__/views.cpython-310.pyc
 *.pyc
 *.pyc
 bookstore/ebook/__pycache__/urls.cpython-310.pyc
+bookstore/ebook/__pycache__/urls.cpython-310.pyc
