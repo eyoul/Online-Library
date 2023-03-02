@@ -25,7 +25,14 @@
                 <li><a href="{% url 'list_books' %}">REFERENCE BOOK</a></li>
               </ul>
             </li> 
-          <li><a href="#">Manage</a></li>
+          <li>
+            <a href="#">Manage</a>
+            <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+              <ul class="htmlCss-sub-menu sub-menu"> 
+                <li><a href="#">EDIT BOOK</a></li>
+                <li><a href="#">DELETE BOOK</a></li>
+            </ul>
+          </li>
           {% comment %} <li><a href="#">Send Feedback</a></li> {% endcomment %}
           <li><a href="{% url 'logout' %}">Logout</a></li>
         </ul>
