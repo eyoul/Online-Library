@@ -1,7 +1,21 @@
-{% extends 'base.html' %}
-
+{% load static %}
 <html lang="en" dir="ltr">
-{% block content  %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dummies Library</title>
+    <link rel="stylesheet" href="{% static 'ebook/css/style.css' %}">
+    <style>
+      .img {
+          background: url("{% static 'ebook/images/img3.jpg' %}")no-repeat;
+          width: 100%;
+          height: 100vh;
+          background-size: cover;
+          background-position: center;
+          position: relative;
+        }
+  </style> 
+  </head>
 <body>
     <nav>
     <div class="menu">
@@ -9,7 +23,7 @@
         <a href="{% url 'index' %}">Dummies Library</a>
       </div>
       <ul>
-        <li><a href="{% url 'student' %}">Student</a></li>
+       
         <li><a href="{% url 'register' %}">Register</a></li>
         <li><a href="{% url 'login' %}">SignIn</a></li>
       
@@ -24,10 +38,9 @@
     <div class="sub_title">is the location of library </div>
     <div class="btns">
       <button><a href="{% url 'login' %}">Learn More</a></button>
-      <!-- <button>Subscribe</button> -->
+     
     </div>
   </div>
 </body>
 
 </html>
-{% endblock  %}

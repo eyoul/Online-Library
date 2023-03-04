@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Rbook, Tbook
+from .models import *
+
 class RbookForm(ModelForm):
     class Meta:
         model = Rbook
@@ -8,4 +9,9 @@ class RbookForm(ModelForm):
 class TbookForm(ModelForm):
     class Meta:
         model = Tbook
+        fields = "__all__"
+
+class addQuestionform(ModelForm):
+    class Meta:
+        model = Quiz
         fields = "__all__"

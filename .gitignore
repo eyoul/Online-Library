@@ -1,4 +1,5 @@
 virt/
+trash/
 *.pyc
 *.pyo
 bookstore/bookstore/__pycache__/

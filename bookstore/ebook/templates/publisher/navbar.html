@@ -7,36 +7,59 @@
           <span class="logo-name">Dummies Library</span>
           <i class='bx bx-x' ></i>
         </div>
+        
         <ul class="links">
+          {% if request.user.is_staff %}
           <li><a href="{% url 'home' %}">HOME</a></li>
           <li>
               <a href="#">ADD BOOK</a>
               <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
               <ul class="htmlCss-sub-menu sub-menu">
-                <li><a href="{% url 'addRbook' %}">ADD REFERENCE BOOK</a></li>
-                <li><a href="{% url 'addTbook' %}">ADD TEXT BOOK</a></li>
+                <li><a href="{% url 'addRbook' %}">ADD REFERENCE</a></li>
+                <li><a href="{% url 'addTbook' %}">ADD TEXT</a></li>
               </ul>
-            </li>      
+            </li>
+            {% else %}      
             <li>
               <a href="#">BOOKS</a>
               <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
               <ul class="htmlCss-sub-menu sub-menu"> 
-                <li><a href="{% url 'list_tbooks' %}">TEXT BOOK</a></li>
-                <li><a href="{% url 'list_books' %}">REFERENCE BOOK</a></li>
+                <li><a href="{% url 'list_tbooks' %}">TEXT</a></li>
+                <li><a href="{% url 'list_books' %}">REFERENCE</a></li>
               </ul>
+              {% endif %}
             </li> 
-          <li>
-            <a href="#">Manage</a>
+            {% if user.is_authenticated %}
+            {% if request.user.is_staff %}
+            <li>
+            <a href="#">MANAGE</a>
             <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
               <ul class="htmlCss-sub-menu sub-menu"> 
-                <li><a href="#">EDIT BOOK</a></li>
-                <li><a href="#">DELETE BOOK</a></li>
+                <li><a href="#">BOOK</a></li>
+                <li><a href="#">USER</a></li>
+            </ul>
+          </li>
+          {% endif %}
+          <li>
+            <a href="#">QUIZ</a>
+            <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
+              <ul class="htmlCss-sub-menu sub-menu"> 
+                {% if request.user.is_staff %}
+                <li><a href="{% url 'addQuestion' %}">ADD</a></li>
+                {% endif %}
+                <li><a href="{% url 'quizhome' %}">TAKE</a></li>
             </ul>
           </li>
           {% comment %} <li><a href="#">Send Feedback</a></li> {% endcomment %}
-          <li><a href="{% url 'logout' %}">Logout</a></li>
+          <span class="greet">User, {{request.user}}</span>      
         </ul>
+        {% endif %}
       </div>
       
     </div>
   </nav>
+ 
+
+
+  
+  
