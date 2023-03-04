@@ -4,7 +4,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <div>
-    
+    {% if user.is_authenticated %}
     <form method="post" enctype= multipart/form-data>
         {% csrf_token %}
         <center><h2>ADD TEXT BOOK</h2></center>
@@ -52,5 +52,5 @@
     </div>
     </form>
 </div>
-
+{% endif %}
 {% endblock  %}

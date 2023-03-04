@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.views.generic import View
 from .models import Rbook, Tbook
-from .forms import RbookForm, TbookForm
+from .forms import *
 from django.http import HttpResponseRedirect
 from django.contrib import auth
 from django.contrib.auth import authenticate
@@ -165,3 +165,54 @@ def grade_rbooks(request, grade):
 def grade_tbooks(request, grade):
     tbooks = Tbook.objects.filter(grade=grade)
     return render(request, "publisher/subject_tbook.html", {"tbooks": tbooks})
+
+
+# Create your views here.
+def quizhome(request):
+    if request.method == 'POST':
+        print(request.POST)
+        questions=Quiz.objects.all()
+        score=0
+        wrong=0
+        correct=0
+        total=0
+        for q in questions:
+            total+=1
+            print(request.POST.get(q.question))
+            print(q.ans)
+            print()
+            if q.ans ==  request.POST.get(q.question):
+                score+=10
+                correct+=1
+            else:
+                wrong+=1
+    
+        percent = score/(total*10) *100
+        context = {
+            'score':score,
+            'time': request.POST.get('timer'),
+            'correct':correct,
+            'wrong':wrong,
+            'percent':percent,
+            'total':total
+        }
+        return render(request,'quiz/result.html',context)
+    else:
+        questions=Quiz.objects.all()
+        context = {
+            'questions':questions
+        }
+        return render(request,'quiz/quiz.html',context)
+
+def addQuestion(request):    
+    if request.user.is_staff:
+        form=addQuestionform()
+        if(request.method=='POST'):
+            form=addQuestionform(request.POST)
+            if(form.is_valid()):
+                form.save()
+                return redirect('/')
+        context={'form':form}
+        return render(request,'quiz/addQuestion.html',context)
+    else: 
+        return redirect('quizhome')
