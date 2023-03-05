@@ -9,8 +9,9 @@
         </div>
         
         <ul class="links">
-          {% if request.user.is_staff %}
+         
           <li><a href="{% url 'home' %}">HOME</a></li>
+          {% if request.user.is_staff %}
           <li>
               <a href="#">ADD BOOK</a>
               <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
@@ -51,7 +52,9 @@
             </ul>
           </li>
           {% comment %} <li><a href="#">Send Feedback</a></li> {% endcomment %}
+          <li><a href="{% url 'logout' %}">Logout</a></li>
           <span class="greet">User, {{request.user}}</span>      
+          
         </ul>
         {% endif %}
       </div>
