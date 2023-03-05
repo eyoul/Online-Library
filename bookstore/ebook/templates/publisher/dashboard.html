@@ -5,3 +5,10 @@
 {% block content %}
 Hello, {{ user.username|default:'Guest' }}!
 {% endblock %}
+{% if request.user.is_staff %}
+{% endif %} 
+
+{% if user.is_authenticated %}
+{% else %} 
+{% endif %}
+<li><a href="{% url 'logout' %}">Logout</a></li>
