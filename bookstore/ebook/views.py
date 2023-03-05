@@ -169,6 +169,7 @@ def grade_tbooks(request, grade):
 
 # Create your views here.
 def quizhome(request):
+    print(request.method)
     if request.method == 'POST':
         print(request.POST)
         questions=Quiz.objects.all()
@@ -186,7 +187,7 @@ def quizhome(request):
                 correct+=1
             else:
                 wrong+=1
-    
+
         percent = score/(total*10) *100
         context = {
             'score':score,

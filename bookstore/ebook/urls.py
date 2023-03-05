@@ -15,6 +15,8 @@ urlpatterns = [
     
     path('quiz/quizhome', views.quizhome,name='quizhome'),
     path('quiz/addQuestion',  views.addQuestion,name='addQuestion'),
+    path('ldbookk/<int:pk>', views.LDeleteView.as_view(), name='ldbookk'),
+    path('ldbook/<int:pk>', views.LDeleteBook.as_view(), name='ldbook'),
 
     path("book", views.Book.as_view(), name="book"),
     path('student/', views.student, name='student'),
