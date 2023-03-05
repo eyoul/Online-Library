@@ -1,0 +1,12 @@
+<!--users/templates/users/dashboard.html-->
+
+{% extends 'base.html' %}
+
+{% block content %}
+Hello, {{ user.username|default:'Guest' }}!
+{% endblock %}
+{% if user.is_authenticated %}
+
+{% else %}
+
+{% endif %}
