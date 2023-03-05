@@ -16,6 +16,7 @@ urlpatterns = [
     path('quiz/quizhome', views.quizhome,name='quizhome'),
     path('quiz/addQuestion',  views.addQuestion,name='addQuestion'),
 
+
     path("book", views.Book.as_view(), name="book"),
     path('student/', views.student, name='student'),
     path("rbook/<rbook_id>", views.show_rbook, name="show_rbook"),

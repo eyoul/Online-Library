@@ -13,9 +13,11 @@ from . import views
 def index(request):
     return render(request, "index.html", {})
 
+
 # About Page .
 def about(request):
     return render(request, "about.html", {})
+
 
 def pdfview(request, rbook_id):
     rbook = Rbook.objects.get(pk=rbook_id)
@@ -23,12 +25,14 @@ def pdfview(request, rbook_id):
     rbook.cover = str(rbook.cover).replace("ebook/static/", "")
     return render(request, "publisher/view.html", {"rbook": rbook})
 
+
 def pdfview1(request, tbook_id):
     tbook = Tbook.objects.get(pk=tbook_id)
     tbook.pdf = str(tbook.pdf).replace("ebook/static/", "")
     tbook.cover = str(tbook.cover).replace("ebook/static/", "")
     return render(request, "publisher/view1.html", {"tbook": tbook})
-    
+
+
 # publisher add rbook page
 def addRbook(request):
     print("request received")
@@ -142,7 +146,6 @@ def show_tbook(request, tbook_id):
     return render(request, "publisher/single_tbook.html", {"tbook": tbook})
 
 
-
 def listTBooks(request):
     list_tbooks = Tbook.objects.all()
     print("tbooks: ", list_tbooks)
@@ -169,50 +172,59 @@ def grade_tbooks(request, grade):
 
 # Create your views here.
 def quizhome(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         print(request.POST)
-        questions=Quiz.objects.all()
-        score=0
-        wrong=0
-        correct=0
-        total=0
+        counter = 0
+        questions = Quiz.objects.all()
+        score = 0
+        wrong = 0
+        correct = 0
+        total = 0
         for q in questions:
-            total+=1
+            total += 1
             print(request.POST.get(q.question))
-            print(q.ans)
+            if "1" in str(request.POST.get(q.question)):
+                submitted_answer = q.op1
+            elif "2" in str(request.POST.get(q.question)):
+                submitted_answer = q.op2
+            elif "3" in str(request.POST.get(q.question)):
+                submitted_answer = q.op3
+            elif "4" in str(request.POST.get(q.question)):
+                submitted_answer = q.op4
+            print("submitted answer: ", submitted_answer)
+            print("real answer: ", q.ans)
             print()
-            if q.ans ==  request.POST.get(q.question):
-                score+=10
-                correct+=1
+            if q.ans == submitted_answer:
+                score += 10
+                correct += 1
             else:
-                wrong+=1
-    
-        percent = score/(total*10) *100
-        context = {
-            'score':score,
-            'time': request.POST.get('timer'),
-            'correct':correct,
-            'wrong':wrong,
-            'percent':percent,
-            'total':total
-        }
-        return render(request,'quiz/result.html',context)
-    else:
-        questions=Quiz.objects.all()
-        context = {
-            'questions':questions
-        }
-        return render(request,'quiz/quiz.html',context)
+                wrong += 1
 
-def addQuestion(request):    
+        percent = round(score / (total * 10) * 100, 2)
+        context = {
+            "score": score,
+            "time": request.POST.get("timer"),
+            "correct": correct,
+            "wrong": wrong,
+            "percent": percent,
+            "total": total,
+        }
+        return render(request, "quiz/result.html", context)
+    else:
+        questions = Quiz.objects.all()
+        context = {"questions": questions}
+        return render(request, "quiz/quiz.html", context)
+
+
+def addQuestion(request):
     if request.user.is_staff:
-        form=addQuestionform()
-        if(request.method=='POST'):
-            form=addQuestionform(request.POST)
-            if(form.is_valid()):
+        form = addQuestionform()
+        if request.method == "POST":
+            form = addQuestionform(request.POST)
+            if form.is_valid():
                 form.save()
-                return redirect('home')
-        context={'form':form}
-        return render(request,'quiz/addQuestion.html',context)
-    else: 
-        return redirect('quizhome')
+                return redirect("home")
+        context = {"form": form}
+        return render(request, "quiz/addQuestion.html", context)
+    else:
+        return redirect("quizhome")
