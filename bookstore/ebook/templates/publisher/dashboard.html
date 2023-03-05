@@ -11,3 +11,4 @@ Hello, {{ user.username|default:'Guest' }}!
 {% if user.is_authenticated %}
 {% else %} 
 {% endif %}
+<li><a href="{% url 'logout' %}">Logout</a></li>
