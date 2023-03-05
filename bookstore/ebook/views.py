@@ -167,7 +167,9 @@ def grade_rbooks(request, grade):
 
 def grade_tbooks(request, grade):
     tbooks = Tbook.objects.filter(grade=grade)
-    return render(request, "tbooks/subject_tbook.html", {"tbooks": tbooks})
+    return render(request, "publisher/subject_tbook.html", {"tbooks": tbooks})
+
+    #   return render(request, "tbooks/subject_tbook.html", {"tbooks": tbooks})
 
 
 def update_tbook(request, tbook_id):
@@ -181,7 +183,7 @@ def update_tbook(request, tbook_id):
             print("invalid form: ", form.errors)
     else:
         form = TbookForm(None, instance=tbook)
-    return render(request, "tbooks/update_tbook.html", {"tbook": tbook, "form": form})
+    return render(request, "publisher/update_tbook.html", {"tbook": tbook, "form": form})
 
 
 def update_rbook(request, rbook_id):
@@ -195,9 +197,7 @@ def update_rbook(request, rbook_id):
             print("invalid form: ", form.errors)
     else:
         form = RbookForm(None, instance=rbook)
-    return render(request, "rbooks/update_rbook.html", {"rboook": rbook, "form": form})
-
-    return render(request, "publisher/subject_tbook.html", {"tbooks": tbooks})
+    return render(request, "publisher/update_rbook.html", {"rboook": rbook, "form": form})
 
 
 # Create your views here.
