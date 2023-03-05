@@ -1,0 +1,37 @@
+{% extends 'librarian/base.html' %}
+
+
+{% block content %}
+
+<form class="row g-3">
+    <center><h2>Add Text Book</h2></center>
+   <div class="col-md-12">
+    <label for="inputState" class="form-label">Grade</label>
+    <select id="inputState" class="form-select">
+      <option selected>Choose...</option>
+      <option>...</option>
+    </select>
+  </div>
+  <div class="col-md-12">
+    <label for="inputState" class="form-label">Subject</label>
+    <select id="inputState" class="form-select">
+      <option selected>Choose...</option>
+      <option>...</option>
+    </select>
+   </div>
+ <div class="col-12">
+    <label for="inputAddress" class="form-label">Description</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="Description ..">
+  </div>
+<div class="mb-3">
+  <label for="formFile" class="form-label">Add Cover Page</label>
+  <input class="form-control" type="file" id="formFile">
+</div>
+<div class="mb-3">
+  <label for="formFile" class="form-label">Add Pdf File</label>
+  <input class="form-control" type="file" id="formFile">
+</div>
+ <button type="button" class="btn btn-primary btn-lg btn-block">Submit</button>
+
+</form>
+{% endblock content %}

@@ -167,6 +167,36 @@ def grade_rbooks(request, grade):
 
 def grade_tbooks(request, grade):
     tbooks = Tbook.objects.filter(grade=grade)
+    return render(request, "tbooks/subject_tbook.html", {"tbooks": tbooks})
+
+
+def update_tbook(request, tbook_id):
+    tbook = Tbook.objects.get(pk=tbook_id)
+    if request.POST:
+        form = TbookForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("list_tbooks")
+        else:
+            print("invalid form: ", form.errors)
+    else:
+        form = TbookForm(None, instance=tbook)
+    return render(request, "tbooks/update_tbook.html", {"tbook": tbook, "form": form})
+
+
+def update_rbook(request, rbook_id):
+    rbook = Rbook.objects.get(pk=rbook_id)
+    if request.POST:
+        form = RbookForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("list_books")
+        else:
+            print("invalid form: ", form.errors)
+    else:
+        form = RbookForm(None, instance=rbook)
+    return render(request, "rbooks/update_rbook.html", {"rboook": rbook, "form": form})
+
     return render(request, "publisher/subject_tbook.html", {"tbooks": tbooks})
 
 

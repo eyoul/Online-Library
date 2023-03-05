@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+{% block content  %}
+
+
+<body>
+    <nav>
+    <div class="menu">
+      <div class="logo">
+        <a href="#">Dummies Library</a>
+      </div>
+      <ul>
+        <li><a href="{% url 'logio' %}">SignIn</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'gchat' %}">Chat</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="img"></div>
+  <div class="center">
+   
+
+    <div class="title">The only thing that you absolutely have to know,</div>
+    <div class="sub_title">is the location of library </div>
+    <div class="btns">
+      <button><a href="{% url 'login' %}">Learn More</a></button>
+      <!-- <button>Subscribe</button> -->
+    </div>
+  </div>
+</body>
+
+</html>
+{% endblock  %}

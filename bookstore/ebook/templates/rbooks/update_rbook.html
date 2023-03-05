@@ -1,0 +1,12 @@
+{% block content %}
+    <center>
+        <h1> Update Reference Book </h1>
+        <br/>
+        <form method="post", enctype= multipart/form-data >
+            {% csrf_token %}
+            {{ form.as_ul }}
+            <br/>
+            <input type="submit" value="update">
+        </form>
+    </center>
+{% endblock %}
