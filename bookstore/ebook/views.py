@@ -258,3 +258,9 @@ def addQuestion(request):
         return render(request, "quiz/addQuestion.html", context)
     else:
         return redirect("quizhome")
+ 
+def delete_rbook(request, rbook_id):
+    rbook = Rbook.objects.get(pk=rbook_id)
+    rbook.delete()
+    return redirect("list_books")
+
