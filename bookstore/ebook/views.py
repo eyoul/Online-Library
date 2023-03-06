@@ -264,3 +264,8 @@ def delete_rbook(request, rbook_id):
     rbook.delete()
     return redirect("list_books")
 
+def delete_tbook(request, tbook_id):
+    tbook = Tbook.objects.get(pk=tbook_id)
+    tbook.delete()
+    return redirect("list_tbooks")
+
