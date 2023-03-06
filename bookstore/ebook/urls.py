@@ -21,6 +21,8 @@ urlpatterns = [
     path("student/", views.student, name="student"),
     path("rbook/<rbook_id>", views.show_rbook, name="show_rbook"),
     path("rbook/grade/<grade>", views.grade_rbooks, name="grade_rbooks"),
+    path("tbook/delete/<tbook_id>", views.delete_tbook, name="delete_tbook"),
+    path("rbook/delete/<rbook_id>", views.delete_rbook, name="delete_rbook"),
 
        
     # path("tbook", views.addTbook, name="addTbook"),
