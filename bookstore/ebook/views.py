@@ -173,7 +173,7 @@ def grade_tbooks(request, grade):
 def update_tbook(request, tbook_id):
     tbook = Tbook.objects.get(pk=tbook_id)
     if request.POST:
-        form = TbookForm(request.POST, request.FILES)
+        form = TbookForm(request.POST, request.FILES, instance=tbook)
         if form.is_valid():
             form.save()
             return redirect("list_tbooks")
@@ -187,7 +187,7 @@ def update_tbook(request, tbook_id):
 def update_rbook(request, rbook_id):
     rbook = Rbook.objects.get(pk=rbook_id)
     if request.POST:
-        form = RbookForm(request.POST, request.FILES)
+        form = RbookForm(request.POST, request.FILES, instance=rbook)
         if form.is_valid():
             form.save()
             return redirect("list_books")
