@@ -1,12 +1,19 @@
+{% extends 'publisher/base.html' %}
+{% load static %}
 {% block content %}
+{% if request.user.is_staff %}
     <center>
         <h1> Update Reference Book </h1>
-        <br/>
+<div class="col-12">    
         <form method="post", enctype= multipart/form-data >
             {% csrf_token %}
-            {{ form.as_ul }}
-            <br/>
+        
+                {{ form.as_ul }}
+            
             <input type="submit" value="update">
+        
         </form>
+</div>
     </center>
+    {% endif %}
 {% endblock %}
