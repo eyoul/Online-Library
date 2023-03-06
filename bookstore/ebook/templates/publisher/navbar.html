@@ -9,7 +9,7 @@
         </div>
         
         <ul class="links">
-         
+{% if user.is_authenticated %}
           <li><a href="{% url 'home' %}">HOME</a></li>
           {% if request.user.is_staff %}
           <li>
@@ -22,25 +22,31 @@
             </li>
             {% endif %}   
             <li>
-              <a href="#">BOOKS</a>
+              <a href="#">TEXT</a>
               <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
               <ul class="htmlCss-sub-menu sub-menu"> 
-                <li><a href="{% url 'list_tbooks' %}">TEXT</a></li>
-                <li><a href="{% url 'list_books' %}">REFERENCE</a></li>
+                <li><a href="{% url 'list_tbooks' %}">VIEW</a></li>
+          {% if request.user.is_staff %}  
+                <li><a href="#">EDIT</a></li>
+                <li><a href="#">DELETE</a></li>
+          {% endif %}
               </ul>
             
             </li> 
-            {% if user.is_authenticated %}
-            {% if request.user.is_staff %}
+           
+            
             <li>
-            <a href="#">MANAGE</a>
+            <a href="#">REFERENCE</a>
             <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
               <ul class="htmlCss-sub-menu sub-menu"> 
-                <li><a href="#">TEXT</a></li>                
-                <li><a href="#">REFERENCE</a></li>
-               </ul>
-             </li>
+                <li><a href="{% url 'list_books' %}">VIEW</a></li>
+          {% if request.user.is_staff %}                
+                <li><a href="#">EDIT</a></li>
+                <li><a href="#">DELETE</a></li>
           {% endif %}
+              </ul>
+             </li>
+          
           <li>
             <a href="#">QUIZ</a>
             <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
@@ -56,7 +62,7 @@
           <span class="greet">User, {{request.user}}</span>      
           
         </ul>
-        {% endif %}
+{% endif %}
       </div>
       
     </div>
