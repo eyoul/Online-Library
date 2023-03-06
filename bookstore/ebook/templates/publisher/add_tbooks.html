@@ -33,7 +33,7 @@
         <input type="text" class="form-control" id="inputAddress" placeholder="Description .." name="desc" required>
     </div>
     <div class="col-12">
-        <label for="inputAddress" class="form-label">Uploaded By</label>
+        {% comment %} <label for="inputAddress" class="form-label">Uploaded By</label> {% endcomment %}
         <input type="text" class="form-control" id="inputAddress"  name="uploaded_by" value="{{ user.username}}" hidden>
     </div>
 
