@@ -22,29 +22,14 @@
             </li>
             {% endif %}   
             <li>
-              <a href="#">TEXT</a>
+              <a href="#">BOOK</a>
               <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
               <ul class="htmlCss-sub-menu sub-menu"> 
-                <li><a href="{% url 'list_tbooks' %}">VIEW</a></li>
-          {% if request.user.is_staff %}  
-              <li><a href="#">DELETE</a></li>
-          {% endif %}
+                <li><a href="{% url 'list_tbooks' %}">TEXT</a></li>
+                <li><a href="{% url 'list_books' %}">REFERENCE</a></li>
               </ul>
-            
             </li> 
-           
-            
-            <li>
-            <a href="#">REFERENCE</a>
-            <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
-              <ul class="htmlCss-sub-menu sub-menu"> 
-                <li><a href="{% url 'list_books' %}">VIEW</a></li>
-          {% if request.user.is_staff %}                
-                <li><a href="#">DELETE</a></li>
-          {% endif %}
-              </ul>
-             </li>
-          
+                
           <li>
             <a href="#">QUIZ</a>
             <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
