@@ -1,6 +1,7 @@
 {% extends 'publisher/base.html' %}
-{% block content %} 
 {% load static %}
+{% block content %} 
+{% if user.is_authenticated %}
         <br>
         <br>
         <br>
@@ -45,4 +46,7 @@
     </tbody>
   </table>
 </div>
+{% endif %}
   {% endblock %}
+
+

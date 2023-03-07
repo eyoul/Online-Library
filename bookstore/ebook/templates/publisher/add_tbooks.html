@@ -3,6 +3,7 @@
 
 {% load crispy_forms_tags %}
 {% block content %}
+{% if user.is_authenticated %}
 <div>
     {% if request.user.is_staff %}
     <form method="post" enctype= multipart/form-data>
@@ -53,4 +54,8 @@
     </form>
 </div>
 {% endif %}
+{% endif %}
 {% endblock  %}
+
+
+

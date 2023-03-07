@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block content %}
+{% if user.is_authenticated %}
 {% if request.user.is_staff %}
     <center>
         <h1> Update Text Book </h1>
@@ -14,5 +15,9 @@
             <input type="submit" value="update">
         </form>
     </center>
-    {% endif %}  
+    {% endif %} 
+    {% endif %} 
 {% endblock %}
+
+
+

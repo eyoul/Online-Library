@@ -1,7 +1,9 @@
 {% extends 'publisher/base.html' %}
 {% load static %}
 {% block content %}
+{% if user.is_authenticated %}
 {% if request.user.is_staff %}
+
     <center>
         <div class="col-12">
     <h1> Update Reference Book </h1>    
@@ -15,5 +17,6 @@
         </form>
 </div>
     </center>
+    {% endif %}
     {% endif %}
 {% endblock %}

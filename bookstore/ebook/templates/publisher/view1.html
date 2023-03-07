@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %} 
+{% if user.is_authenticated %}
 <br>
 <br>
 <br>
@@ -11,4 +12,8 @@
   
     <object data="{% static tbook.pdf %}" width="900px" height="500px"></object>
 </center>
+{% endif %}
 {% endblock %}
+
+
+
