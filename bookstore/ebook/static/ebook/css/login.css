@@ -1,16 +1,3 @@
-
-{% load static %}
-
-<html lang="en">
-<head>
-  <!-- Design by foolishdeveloper.com -->
-    <title> Student | DummiesLibrary</title>
- 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-    <!--Stylesheet-->
-<style>
 *,
 *:before,
 *:after{
@@ -101,28 +88,3 @@ button{
     border-radius: 5px;
     cursor: pointer;
 }
-
-</style>
-</head>
-<body> <
-    div class="background">
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
-     {% block content %}
-   
-        <h3>Login Here</h3>
-<br/><br/>
-
-<div class="form-group">
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-secondary"> Login</button>
-    </form>
-</div>
-
-{% endblock content %}
-
-</body>
-</html>

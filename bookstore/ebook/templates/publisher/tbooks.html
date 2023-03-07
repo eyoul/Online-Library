@@ -35,7 +35,7 @@
         <td><a href="{% url 'pdfview1' book.id %}" > <img src="{% static book.cover %}" class="rounded" width="120" height="100"> </a></td>
         {% if request.user.is_staff %}
         <td><a href="{% url 'update_tbook' book.id %}">EDIT</a></td>
-        <td><a href="{% url 'delete_tbook' book.id %}">DELETE</a></td>delete_tbook
+        <td><a href="{% url 'delete_tbook' book.id %}" onclick="myFunction()">DELETE</a></td>
         {% endif %}
       </tr>
       {% endfor %}
