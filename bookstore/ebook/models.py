@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 
+# Text Book models
 
 class Tbook(models.Model):
     grade = models.CharField(max_length=100)
@@ -21,6 +22,7 @@ class Tbook(models.Model):
         self.cover.delete()
         super().delete(*args, **kwargs)
 
+# Reference  Book models
 
 class Rbook(models.Model):
     title = models.CharField(max_length=100)
@@ -40,31 +42,8 @@ class Rbook(models.Model):
         self.pdf.delete()
         self.cover.delete()
         super().delete(*args, **kwargs)
-
-
-class Chat(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    message = models.TextField()
-    posted_at = models.DateTimeField(auto_now=True, null=True)
-
-    def __str__(self):
-        return str(self.message) + "|" + str(self.user)
-
-
-class Deleterequest(models.Model):
-    delete_request = models.CharField(max_length=100, null=True, blank=True)
-
-    def __str__(self):
-        return self.delete_request
-
-
-class Feedback(models.Model):
-    feedback = models.CharField(max_length=200, null=True, blank=True)
-
-    def __str__(self):
-        return self.feedback
     
-# Create your models here.
+# Quiz models 
 class Quiz(models.Model):
     question = models.CharField(max_length=200,null=True)
     op1 = models.CharField(max_length=200,null=True)

@@ -3,8 +3,8 @@
 {% block content %}
 {% if request.user.is_staff %}
     <center>
-        <h1> Update Reference Book </h1>
-<div class="col-12">    
+        <div class="col-12">
+    <h1> Update Reference Book </h1>    
         <form method="post", enctype= multipart/form-data >
             {% csrf_token %}
         
