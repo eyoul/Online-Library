@@ -4,7 +4,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <div>
-    {% if user.is_authenticated %}
+    {% if request.user.is_staff %}
     <form method="post" enctype= multipart/form-data>
     {% csrf_token %}
     <center><h2>ADD REFERENCE OR SLIDE</h2></center>
@@ -36,8 +36,8 @@
         <input type="text" class="form-control" id="inputAddress" placeholder="Description .." name="desc" required>
     </div>
     <div class="col-12">
-        <label for="inputAddress" class="form-label" desable>Uploaded By</label>
-        <input type="text" class="form-control" id="inputAddress"  name="uploaded_by" value="{{ user.username}}" disabled>
+        {% comment %} <label for="inputAddress" class="form-label" desable>Uploaded By</label> {% endcomment %}
+        <input type="text" class="form-control" id="inputAddress"  name="uploaded_by" value="{{ user.username}}" hidden>
     </div>
 
     <div class="col-12">

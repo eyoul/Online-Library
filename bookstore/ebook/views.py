@@ -6,26 +6,27 @@ from django.http import HttpResponseRedirect
 from django.contrib import auth
 from django.contrib.auth import authenticate
 from django.contrib import messages
-
 from . import views
 
-
+# Index page
 def index(request):
     return render(request, "index.html", {})
-
+# home page
+def home(request):
+    return render(request, "publisher/home.html", {})
 
 # About Page .
 def about(request):
     return render(request, "about.html", {})
 
-
+# Reference book view
 def pdfview(request, rbook_id):
     rbook = Rbook.objects.get(pk=rbook_id)
     rbook.pdf = str(rbook.pdf).replace("ebook/static/", "")
     rbook.cover = str(rbook.cover).replace("ebook/static/", "")
     return render(request, "publisher/view.html", {"rbook": rbook})
 
-
+# Text book view
 def pdfview1(request, tbook_id):
     tbook = Tbook.objects.get(pk=tbook_id)
     tbook.pdf = str(tbook.pdf).replace("ebook/static/", "")
@@ -33,7 +34,7 @@ def pdfview1(request, tbook_id):
     return render(request, "publisher/view1.html", {"tbook": tbook})
 
 
-# publisher add rbook page
+# ADD Reference book
 def addRbook(request):
     print("request received")
     submitted = False
@@ -55,7 +56,7 @@ def addRbook(request):
         request, "publisher/add_rbook.html", {"form": form, "submitted": submitted}
     )
 
-
+# List Reference book
 def listBooks(request):
     books_list = Rbook.objects.all()
     print("rbooks: ", books_list)
@@ -88,38 +89,7 @@ class Book(View):
         return render(request, "publisher/add_rbook.html", self.context)
 
 
-def home(request):
-    return render(request, "publisher/home.html", {})
-
-
-def student(request):
-    return render(request, "student/home.html", {})
-
-
-def home(request):
-    return render(request, "publisher/home.html", {})
-
-
-# User is authenticated
-def loginView(request):
-    if request.method == "POST":
-        username = request.POST["username"]
-        password = request.POST["password"]
-        user = authenticate(request, username=username, password=password)
-        if user is not None and user.is_active:
-            auth.login(request, user)
-            if user.is_admin or user.is_superuser:
-                return redirect("dashboard")
-            elif user.is_librarian:
-                return redirect("librarian")
-            elif user.is_publisher:
-                return redirect("publisher")
-            else:
-                return redirect("student")
-        else:
-            messages.info(request, "Invalid username or password")
-            return redirect("home")
-
+# ADD Text book
 
 def addTbook(request):
     print("request received")
@@ -140,11 +110,13 @@ def addTbook(request):
         request, "publisher/add_tbooks.html", {"form": form, "submitted": submitted}
     )
 
+# Text book single view
 
 def show_tbook(request, tbook_id):
     tbook = Tbook.objects.get(pk=tbook_id)
     return render(request, "publisher/single_tbook.html", {"tbook": tbook})
 
+# List Text book
 
 def listTBooks(request):
     list_tbooks = Tbook.objects.all()
@@ -154,26 +126,28 @@ def listTBooks(request):
         data.cover = str(data.cover).replace("ebook/static/", "")
     return render(request, "publisher/tbooks.html", {"list_tbooks": list_tbooks})
 
+# Reference book single view
 
 def show_rbook(request, rbook_id):
     rbook = Rbook.objects.get(pk=rbook_id)
     return render(request, "publisher/single_rbook.html", {"rbook": rbook})
 
-
+# Filter Reference book
 def grade_rbooks(request, grade):
     rbooks = Rbook.objects.filter(grade=grade)
     return render(request, "publisher/subject_rbook.html", {"rbooks": rbooks})
 
-
+# Filter Text book
 def grade_tbooks(request, grade):
     tbooks = Tbook.objects.filter(grade=grade)
-    return render(request, "tbooks/subject_tbook.html", {"tbooks": tbooks})
+    return render(request, "publisher/subject_tbook.html", {"tbooks": tbooks})
 
+# Edit Reference book
 
 def update_tbook(request, tbook_id):
     tbook = Tbook.objects.get(pk=tbook_id)
     if request.POST:
-        form = TbookForm(request.POST, request.FILES)
+        form = TbookForm(request.POST, request.FILES, instance=tbook)
         if form.is_valid():
             form.save()
             return redirect("list_tbooks")
@@ -181,13 +155,14 @@ def update_tbook(request, tbook_id):
             print("invalid form: ", form.errors)
     else:
         form = TbookForm(None, instance=tbook)
-    return render(request, "tbooks/update_tbook.html", {"tbook": tbook, "form": form})
+    return render(request, "publisher/update_tbook.html", {"tbook": tbook, "form": form})
 
+# Edit Text book
 
 def update_rbook(request, rbook_id):
     rbook = Rbook.objects.get(pk=rbook_id)
     if request.POST:
-        form = RbookForm(request.POST, request.FILES)
+        form = RbookForm(request.POST, request.FILES, instance=rbook)
         if form.is_valid():
             form.save()
             return redirect("list_books")
@@ -195,12 +170,24 @@ def update_rbook(request, rbook_id):
             print("invalid form: ", form.errors)
     else:
         form = RbookForm(None, instance=rbook)
-    return render(request, "rbooks/update_rbook.html", {"rboook": rbook, "form": form})
+    return render(request, "publisher/update_rbook.html", {"rboook": rbook, "form": form})
 
-    return render(request, "publisher/subject_tbook.html", {"tbooks": tbooks})
+# Delete Reference book
+
+def delete_rbook(request, rbook_id):
+    rbook = Rbook.objects.get(pk=rbook_id)
+    rbook.delete()
+    return redirect("list_books")
+
+# Delete Text book
+
+def delete_tbook(request, tbook_id):
+    tbook = Tbook.objects.get(pk=tbook_id)
+    tbook.delete()
+    return redirect("list_tbooks")
 
 
-# Create your views here.
+# Quiz Taking Page.
 def quizhome(request):
     if request.method == "POST":
         print(request.POST)
@@ -245,6 +232,7 @@ def quizhome(request):
         context = {"questions": questions}
         return render(request, "quiz/quiz.html", context)
 
+# Add Quiz Page 
 
 def addQuestion(request):
     if request.user.is_staff:
