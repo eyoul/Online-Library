@@ -1,0 +1,56 @@
+
+{% extends 'publisher/base.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+<div>
+    {% if request.user.is_staff %}
+    <form method="post" enctype= multipart/form-data>
+        {% csrf_token %}
+        <center><h2>ADD TEXT BOOK</h2></center>
+    
+    <div class="col-12">
+        <label for="inputState" class="form-label">Grade</label>
+         <select id="inputState" class="form-select" name="grade" required>
+        <option selected>Choose...</option>
+        <option>Grade 12</option>
+        <option>Grade 11</option>
+        <option>Grade 10</option>
+        </select>
+    </div>
+    <div class="col-12">
+        <label for="inputState" class="form-label">Subject</label>
+        <select id="inputState" class="form-select" name="subject" required>
+        <option selected>Choose...</option>
+        <option>Biology</option> 
+        <option>English</option>
+        <option>Geography</option>
+        <option>Mathematics</option>
+        </select>
+    </div>
+    <div class="col-12">
+        <label for="inputAddress" class="form-label">Description</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="Description .." name="desc" required>
+    </div>
+    <div class="col-12">
+        {% comment %} <label for="inputAddress" class="form-label">Uploaded By</label> {% endcomment %}
+        <input type="text" class="form-control" id="inputAddress"  name="uploaded_by" value="{{ user.username}}" hidden>
+    </div>
+
+    <div class="col-12">
+        <label for="formFile" class="form-label">Add Pdf File</label>
+        <input class="form-control" type="file" id="formFile" name="pdf" required>
+    </div>
+
+    <div class="col-12">
+        <label for="formFile" class="form-label">Add Cover Page</label>
+        <input class="form-control" type="file" id="formFile" name="cover" required>
+    </div>
+    <br>
+    <div class="col-12">
+    <button type="submit" class="btn btn-primary btn-lg btn-block"style="background: #3E8DA8;">Submit</button>
+    </div>
+    </form>
+</div>
+{% endif %}
+{% endblock  %}

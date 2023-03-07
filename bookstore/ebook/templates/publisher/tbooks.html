@@ -1,0 +1,45 @@
+{% extends 'publisher/base.html' %}
+{% block content %} 
+{% load static %}
+
+        <br>
+        <br>
+        <br>
+        <br>
+<div class="container">
+        <center><h1>Text Books</h1></center>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">GRADE</th>
+        <th scope="col">SUBJECT</th> 
+        <th scope="col">DESCRIPTION</th>
+        <th scope="col">UPLOADED BY</th>
+        <th scope="col">FILE</th>
+        {% if request.user.is_staff %}
+        <th scope="col">EDIT</th>
+        <th scope="col">DELETE</th>
+        {% endif %}
+      </tr>
+    </thead>
+    <tbody>
+        {% for book in list_tbooks %}  
+        {% load static %}
+      <tr>
+        <th scope="row">{{ book.id }}</th>
+        <td>{{ book.grade }}</td>
+        <td>{{ book.subject }}</td>
+        <td>{{ book.desc }}</td>
+        <td> {{book.uploaded_by}}</td>
+        <td><a href="{% url 'pdfview1' book.id %}" > <img src="{% static book.cover %}" class="rounded" width="120" height="100"> </a></td>
+        {% if request.user.is_staff %}
+        <td><a href="{% url 'update_tbook' book.id %}">EDIT</a></td>
+        <td><a href="{% url 'delete_tbook' book.id %}">DELETE</a></td>delete_tbook
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+  {% endblock %}

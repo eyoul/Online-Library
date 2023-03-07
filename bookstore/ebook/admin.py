@@ -1,10 +1,12 @@
 from django.contrib import admin
-from .models import Chat, Tbook, Rbook, Deleterequest, Feedback
+from .models import *
 
 
-# Register your models here.
-admin.site.register(Chat),
+# Registration of Text Book models 
 admin.site.register(Tbook),
+
+# Registration of Reference Book models 
 admin.site.register(Rbook)
-admin.site.register(Deleterequest)
-admin.site.register(Feedback)
+
+# Registration of Quiz models 
+admin.site.register(Quiz)
