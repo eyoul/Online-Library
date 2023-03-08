@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Dummies Library</title>
     <link rel="stylesheet" href="{% static 'ebook/css/style.css' %}">
     <style>
@@ -14,11 +15,24 @@
           background-position: center;
           position: relative;
         }
+
   </style> 
+  <script>
+  
+/* Toggle between adding and removing the "responsive"*/
+function myFunction() {
+  var x = document.getElementById("Topnav");
+  if (x.className === "menu") {
+    x.className += " responsive";
+  } else {
+    x.className = "menu";
+  }
+}
+  </script>
   </head>
 <body>
     <nav>
-    <div class="menu">
+    <div class="menu" id="Topnav">
       <div class="logo">
         <a href="{% url 'index' %}">Dummies Library</a>
       </div>
@@ -36,7 +50,7 @@
     <div class="title">The only thing that you absolutely have to know,</div>
     <div class="sub_title">is the location of library </div>
     <div class="btns">
-      <button><a href="{% url 'login' %}">Learn More</a></button>
+      <button><a href="{% url 'login' %}" style=" text-decoration: none;">Learn More</a></button>
      
     </div>
   </div>
