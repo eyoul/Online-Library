@@ -17,14 +17,6 @@ This is a digital library tailored for students at school which is simple that a
 - Admins to control the system
 - ✨Magic ✨
 
-## Features
-
-- Import a HTML file and watch it magically convert to Markdown
-- Drag and drop images (requires your Dropbox account be linked)
-- Import and save files from GitHub, Dropbox, Google Drive and One Drive
-- Drag and drop markdown and HTML files into Dillinger
-- Export documents as Markdown, HTML and PDF
-
 ## Tech
 **Programming languages used:**
 
