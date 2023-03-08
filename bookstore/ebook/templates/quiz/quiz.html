@@ -1,16 +1,25 @@
 {% extends 'publisher/base.html' %}
- 
+ {% load static %}
 {% block content %}
-{% load static %}
+
+{% if user.is_authenticated %}
+<style>
+    body {
+       background-color: lightblue;
+    }
+    @media screen and (max-width: 420px) {
+       body {
+          background-color: lightblue;
+       }
+    }
+  </style>
 <br>
 <br>
 <br>
 <div class="container ">
 <center><h1>Welcome to Dummies Library Quiz</h1></center>
- 
-<div align="right " id="displaytimer"><b>Timer: 0 seconds</b></div>
- 
- <form method='post' action=''>
+ <div align="right " id="displaytimer"><b>Timer: 0 seconds</b></div>
+  <form method='post' action=''>
     {% csrf_token %}
     {% for q  in questions%}
     <div class="form-group">
@@ -18,7 +27,7 @@
     </div>
     <div class="form-check">
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="{{q.question}}" id="gridRadios1" value="option1">
+            <input class="form-check-input" type="radio" name="{{q.question}}" id="gridRadios1" value="option1" required>
             <label class="form-check-label" for="gridRadios1">
                 {{q.op1}}
             </label>
@@ -50,7 +59,6 @@
     <div class="col-12">
         <button type="submit" id="001" class="btn btn-primary btn-lg btn-block"style="background: #3E8DA8;" name="Submit">Submit</button>
     </div>
-    {% comment %} <button type="submit" class="btn btn-primary">Submit</button> {% endcomment %}
   </form>
     {% block script %}
         <script>
@@ -70,4 +78,5 @@
     {% endblock script %}
  
 </div>
+{% endif %}
 {% endblock %}

@@ -1,5 +1,9 @@
-  <nav>
-    <div class="navbar">
+{% load static %}
+
+ <nav>
+ 
+    {% if user.is_authenticated %}
+    <div class="navbar" id="myTopnav">
       <i class='bx bx-menu'></i>
       <div class="logo"><a href="{% url 'home' %}">Dummies Library</a></div>
       <div class="nav-links">
@@ -9,49 +13,42 @@
         </div>
         
         <ul class="links">
-{% if user.is_authenticated %}
           <li><a href="{% url 'home' %}">HOME</a></li>
           {% if request.user.is_staff %}
-          <li>
+            <li>
               <a href="#">ADD BOOK</a>
               <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
-              <ul class="htmlCss-sub-menu sub-menu">
-                <li><a href="{% url 'addTbook' %}">ADD TEXT</a></li>
-                <li><a href="{% url 'addRbook' %}">ADD REFERENCE</a></li>
-              </ul>
+            <ul class="htmlCss-sub-menu sub-menu">
+                  <li><a href="{% url 'addTbook' %}">ADD TEXT BOOK</a></li>
+                  <li><a href="{% url 'addRbook' %}">ADD REFERENCE BOOK</a></li>
+                </ul>
             </li>
             {% endif %}   
             <li>
-              <a href="#">MANAGE BOOK</a>
-              <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
-              <ul class="htmlCss-sub-menu sub-menu"> 
-                <li><a href="{% url 'list_tbooks' %}">TEXT</a></li>
-                <li><a href="{% url 'list_books' %}">REFERENCE</a></li>
+              <a href="#">BOOKS</a>
+              <i class='bx bxs-chevron-down js-arrow arrow '></i>
+            <ul class="js-sub-menu sub-menu">
+                <li><a href="{% url 'list_tbooks' %}">TEXT BOOK</a></li>
+                <li><a href="{% url 'list_books' %}">REFERENCE BOOK</a></li>
               </ul>
-            </li> 
-                
+            </li>     
           <li>
             <a href="#">QUIZ</a>
-            <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
-              <ul class="htmlCss-sub-menu sub-menu"> 
+            <i class='bx bxs-chevron-down js-arrow arrow '></i>
+            <ul class="js-sub-menu sub-menu">
                 {% if request.user.is_staff %}
                 <li><a href="{% url 'addQuestion' %}">ADD</a></li>
                 {% endif %}
                 <li><a href="{% url 'quizhome' %}">TAKE</a></li>
             </ul>
           </li>
-          {% comment %} <li><a href="#">Send Feedback</a></li> {% endcomment %}
           <li><a href="{% url 'logout' %}">Logout</a></li>
           <span class="greet">User, {{request.user}}</span>      
-          
         </ul>
-{% endif %}
+
       </div>
       
     </div>
+    {% endif %}
   </nav>
- 
-
-
-  
   

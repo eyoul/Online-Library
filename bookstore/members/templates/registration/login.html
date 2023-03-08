@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
   <!-- Design by foolishdeveloper.com -->
-    <title> Student | DummiesLibrary</title>
+    <title> User | DummiesLibrary</title>
  
     <link rel="preconnect" href="https://fonts.gstatic.com">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> 
@@ -104,18 +104,16 @@ button{
 
 </style>
 </head>
-<body> <
-    div class="background">
+<body> <div class="background">
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
      {% block content %}
-   
-        <h3>Login Here</h3>
-<br/><br/>
 
+ 
 <div class="form-group">
     <form method="POST">
+        <h3>Login Here</h3>
         {% csrf_token %}
         {{ form.as_p }}
         <button class="btn btn-secondary"> Login</button>

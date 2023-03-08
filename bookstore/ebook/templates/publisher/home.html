@@ -1,17 +1,18 @@
 {% extends 'publisher/base.html' %}
-{% comment %} 
-<div class="mr-5"> <strong>Users</strong> : {{ user }}</div> {% endcomment %}
+
 {% block content %}
+
+<br>
+{% if user.is_authenticated %}
 <div class="home2">
             <h2><a href="https://www.alxafrica.com">ALX Africa</a></h2>
                 <h3>Power Your Future in Tech</h3>
-            <div class="card" align="centre " style="width: 70rem; border:0px black solid">
-                <img class="card-img-top" src="https://cdn1.vc4a.com/media/2021/05/alx-banner.jpg" alt="Card image cap" >
-            <div class="card-body">
 
             
             <h2><a href="https://fs.blog/feynman-learning-technique/">Learning Technique</a></h2>
+{% endif %}
             
 </div>
+
 {% endblock  %}
 

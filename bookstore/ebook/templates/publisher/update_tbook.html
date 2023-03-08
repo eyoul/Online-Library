@@ -1,18 +1,50 @@
+
 {% extends 'publisher/base.html' %}
 
-{% load static %}
-
+{% load crispy_forms_tags %}
 {% block content %}
-{% if request.user.is_staff %}
-    <center>
-        <h1> Update Text Book </h1>
-        <br/>
-        <form method="post", enctype= multipart/form-data >
-            {% csrf_token %}
-            {{ form.as_ul }}
-            <br/>
-            <input type="submit" value="update">
-        </form>
-    </center>
-    {% endif %}  
-{% endblock %}
+{% if user.is_authenticated %}
+<div>
+    {% if request.user.is_staff %}
+    <form method="post" enctype= multipart/form-data>
+        {% csrf_token %}
+        <center><h2>ADD TEXT BOOK</h2></center>
+    
+    <div class="col-12">
+        <label for="inputState" class="form-label">Grade</label>
+         <select id="inputState" class="form-select" name="grade" required>
+        <option selected>{{tbook.grade }}</option>
+        <option>12</option>
+        <option>11</option>
+        <option>10</option>
+        </select>
+    </div>
+    <div class="col-12">
+        <label for="inputState" class="form-label">Subject</label>
+        <select id="inputState" class="form-select" name="subject" required>
+        <option selected> {{ tbook.subject }}</option>
+        <option>Biology</option> 
+        <option>English</option>
+        <option>Geography</option>
+        <option>Mathematics</option>
+        </select>
+    </div>
+    <div class="col-12">
+        <label for="inputAddress" class="form-label">Description</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="Description .." name="desc" value= {{ tbook.desc }}  required>
+    </div>
+    <div class="col-12">
+    <label for="inputAddress" class="form-label" hidden>Uploaded By</label>
+        <input type="text" class="form-control" id="inputAddress"  name="uploaded_by" value="{{ user.username}}" hidden>
+    </div>
+    <br>
+    <div class="col-12">
+    <button type="submit" class="btn btn-primary btn-lg btn-block"style="background: #3E8DA8;">Submit</button>
+    </div>
+    </form>
+    {% endif %}
+</div>
+
+{% endif %}
+{% endblock  %}
+
