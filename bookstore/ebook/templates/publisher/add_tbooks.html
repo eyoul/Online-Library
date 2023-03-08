@@ -14,9 +14,9 @@
         <label for="inputState" class="form-label">Grade</label>
          <select id="inputState" class="form-select" name="grade" required>
         <option selected>Choose...</option>
-        <option>Grade 12</option>
-        <option>Grade 11</option>
-        <option>Grade 10</option>
+        <option>12</option>
+        <option>11</option>
+        <option>10</option>
         </select>
     </div>
     <div class="col-12">
@@ -34,7 +34,7 @@
         <input type="text" class="form-control" id="inputAddress" placeholder="Description .." name="desc" required>
     </div>
     <div class="col-12">
-        {% comment %} <label for="inputAddress" class="form-label">Uploaded By</label> {% endcomment %}
+    <label for="inputAddress" class="form-label" hidden>Uploaded By</label>
         <input type="text" class="form-control" id="inputAddress"  name="uploaded_by" value="{{ user.username}}" hidden>
     </div>
 
@@ -52,8 +52,9 @@
     <button type="submit" class="btn btn-primary btn-lg btn-block"style="background: #3E8DA8;">Submit</button>
     </div>
     </form>
+    {% endif %}
 </div>
-{% endif %}
+
 {% endif %}
 {% endblock  %}
 

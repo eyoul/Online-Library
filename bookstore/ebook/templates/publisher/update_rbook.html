@@ -1,22 +1,50 @@
 {% extends 'publisher/base.html' %}
-{% load static %}
 {% block content %}
-{% if user.is_authenticated %}
-{% if request.user.is_staff %}
-
-    <center>
-        <div class="col-12">
-    <h1> Update Reference Book </h1>    
-        <form method="post", enctype= multipart/form-data >
-            {% csrf_token %}
-        
-                {{ form.as_ul }}
-            
-            <input type="submit" value="update" onclick="myFunction()">
-        
-        </form>
+  
+        <h1> Update Reference Book </h1>
+        <br/>
+        {% load crispy_forms_tags %}
+<div>
+    {% if user.is_authenticated %}
+    <form method="post" enctype= multipart/form-data>
+    {% csrf_token %}
+    <div class="col-12">
+        <label for="inputAddress" class="form-label">Title</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="Title.." name="title" value={{rboook.title}} required>
+    </div>
+    <div class="col-12">
+        <label for="inputState" class="form-label">Grade</label>
+         <select id="inputState" class="form-select" name="grade" required>
+        <option selected> {{rboook.grade}}</option>
+        <option>12</option>
+        <option>11</option>
+        <option>10</option>
+        </select>
+    </div>
+    <div class="col-12">
+        <label for="inputState" class="form-label">Subject</label>
+        <select id="inputState" class="form-select" name="subject" required>
+        <option selected>{{rboook.subject}}</option>
+        <option>Biology</option> 
+        <option>English</option>
+        <option>Geography</option>
+        <option>Mathematics</option>
+        </select>
+    </div>
+    <div class="col-12">
+        <label for="inputAddress" class="form-label">Description</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="Description .." name="desc" value={{rboook.desc}} required>
+    </div>
+    <div class="col-12">
+        <label for="inputAddress" class="form-label" hidden>Uploaded By</label>
+        <input type="text" class="form-control" id="inputAddress"  name="uploaded_by" value="{{ user.username}}" hidden>
+    </div>
+    <br>
+    <div class="col-12">
+    <button type="submit" id="001" class="btn btn-primary btn-lg btn-block"style="background: #3E8DA8;">Submit</button>
+    </div>
+    </form>
+    {% endif %}
 </div>
-    </center>
-    {% endif %}
-    {% endif %}
+
 {% endblock %}
