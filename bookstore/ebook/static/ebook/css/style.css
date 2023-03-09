@@ -105,25 +105,3 @@ nav .menu{
   background: white;
   color: black;
 }
-/* screen is less than 600 pixels */
-@media screen and (max-width: 600px) {
-  .menu a:not(:first-child) {display: none;}
-  .menu a.icon {
-    float: right;
-    display: block;
-  }
-}
-/* The "responsive" class is added to the topnav*/
-@media screen and (max-width: 600px) {
-  .menu.responsive {position: relative;}
-  .menu.responsive a.icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .menu.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
