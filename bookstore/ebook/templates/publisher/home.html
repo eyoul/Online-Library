@@ -5,14 +5,119 @@
 <br>
 {% if user.is_authenticated %}
 <div class="home2">
+            <!--
             <h2><a href="https://www.alxafrica.com">ALX Africa</a></h2>
                 <h3>Power Your Future in Tech</h3>
 
             
             <h2><a href="https://fs.blog/feynman-learning-technique/">Learning Technique</a></h2>
+            -->
+            <section id="hero" class="d-flex align-items-center">
+                <div class="container" data-aos="zoom-out" data-aos-delay="100">
+                  <h1>Welcome to <span>Dummies Library</span></h1>
+                  <h2>Get the latest official text books and reference materials</h2>
+                  <div class="d-flex">
+                    <a href="#about" class="btn-get-started scrollto">Get Started</a>
+                    <a href="https://www.youtube.com/watch?v=P53HfXAHvZ4" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+                  </div>
+                </div>
+              </section><!-- End Hero -->
+            
+            <section id="featured-services" class="featured-services">
+                <div class="container" data-aos="fade-up">
+          
+                  <div class="row">
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                      <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                        <div class="icon"><i class="bx bxl-dribbble"></i></div>
+                        <h4 class="title"><a href="{% url 'list_tbooks' %}">Text Books</a></h4>
+                        <p class="description">Get latest editions of official text books from grade 1 to grade 12 and all subjects</p>
+                      </div>
+                    </div>
+          
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                      <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                        <div class="icon"><i class="bx bx-file"></i></div>
+                        <h4 class="title"><a href="{% url 'list_books' %}">Reference Books</a></h4>
+                        <p class="description">Get latest editions of Reference books from grade 1 to grade 12 and all subjects</p>
+                      </div>
+                    </div>
+          
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                      <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+                        <div class="icon"><i class="bx bx-tachometer"></i></div>
+                        <h4 class="title"><a href="{% url 'quizhome' %}">Sample Quiz</a></h4>
+                        <p class="description">Take timed sample quizes prepared by staff members to gauge your progress </p>
+                      </div>
+                    </div>
+          
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                      <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+                        <div class="icon"><i class="bx bx-world"></i></div>
+                        <h4 class="title"><a href="">More To Come</a></h4>
+                        <p class="description">New features such as lecture videos and qustion boards will be unvield soon</p>
+                      </div>
+                    </div>
+          
+                  </div>
+          
+                </div>
+              </section><!-- End Featured Services Section -->
+              <section id="about" class="about section-bg">
+                <div class="container" data-aos="fade-up">
+          
+                  <div class="section-title">
+                    <h2>About</h2>
+                    <h3>Find Out More <span>About Us</span></h3>
+                    <p>A team of passionate and qualified software engineers raady to meet your needs.</p>
+                  </div>
+          
+                  <div class="row">
+                    <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+                      <img src="../../static/ebook/images/about.jpg" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
+                      <h3>Get to know out team members.</h3>
+                      <p class="fst-italic">
+                        A team of passionate and qualified software engineers raady to meet your needs
+                      </p>
+                      <ul>
+                        <li>
+                          <i class="bx bx-store-alt"></i>
+                          <div>
+                            <h5>Yiacob Kibret</h5>
+                            <p>Passionate Alx Software engineering student with strong interest in AI</p>
+                          </div>
+                        </li>
+                        <li>
+                          <i class="bx bx-images"></i>
+                          <div>
+                            <h5>Eyoel Shemeles</h5>
+                            <p>Passionate Alx Software engineering student with strong interest in Enterprise Software Development</p>
+                          </div>
+                        </li>
+                        <li>
+                            <i class="bx bx-images"></i>
+                            <div>
+                              <h5>Abel Asfaw</h5>
+                              <p>Passionate Alx Software engineering student with strong interest in Api Security</p>
+                            </div>
+                          </li>
+                      </ul>
+                      <p>
+                        With our dedicated team we develop and provide technological solutions to modern problems, with expertise in
+                        different fields across multiple sectors we are more than capable to meet your needs.
+                      </p>
+                    </div>
+                  </div>
+          
+                </div>
+              </section><!-- End About Section -->
+          
 {% endif %}
             
 </div>
 
 {% endblock  %}
+
 
